@@ -2,18 +2,28 @@ package com.multicampus.springex.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @ToString
 @Data
 @Builder
-@AllArgsConstructor       // 모든 속성에 대한 어규먼트 받아서 처리
-@NoArgsConstructor        //Default 생성자
+@AllArgsConstructor
+@NoArgsConstructor
 public class TodoDTO {
+
     private Long tno;
+
+    @NotEmpty
     private String title;
+
+    @Future
     private LocalDate dueDate;
+
     private boolean finished;
+
+    @NotEmpty
     private String writer;
 
 }

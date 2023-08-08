@@ -1,5 +1,6 @@
 package com.multicampus.springex.controller;
 
+
 import com.multicampus.springex.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -11,58 +12,69 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
-@Controller   // 스프링mvc에서 컨트롤러 역할, 스프링의 빈(Bean)으로 등록 처리하겠다.
+@Controller
 @Log4j2
 public class SampleController {
-    @GetMapping("/hello") //Get방식으로 들어오는 요청(Request)를 처리하기 위한 애너테이션
+
+    @GetMapping("/hello")
     public void hello(){
-        log.info("hello");
+        log.info("hello........");
     }
-
-    @GetMapping("/ex1") //Get방식으로 들어오는 요청(Request)를 처리하기 위한 애너테이션
+    @GetMapping("/ex1")
     public void ex1(String name, int age){
-        log.info("ex1......");
-        log.info("name : " + name);
-        log.info("age : " + age);
-
+        log.info("ex1........");
+        log.info("name: " + name);
+        log.info("age: " + age);
     }
+
     @GetMapping("/ex2")
-    public void ex2(@RequestParam(name = "name" , defaultValue = "CCC") String name
-    , @RequestParam(name = "age" , defaultValue = "20") int age){
-        log.info("ex1......");
-        log.info("name : " + name);
-        log.info("age : " + age);
+    public void ex2(@RequestParam(name = "name", defaultValue = "AAA") String name,
+                    @RequestParam(name = "age", defaultValue = "20")int age){
+        log.info("ex2........");
+        log.info("name: " + name);
+        log.info("age: " + age);
     }
 
     @GetMapping("/ex3")
     public void ex3(LocalDate dueDate){
         log.info("ex3........");
-        log.info(dueDate);
+        log.info("dueDate: " + dueDate);
     }
 
     @GetMapping("/ex4")
     public void ex4(Model model){
-        log.info("ex4........");
-        model.addAttribute("message","Hello Spring project");
+
+        log.info("----------------------");
+
+        model.addAttribute("message", "Hello World");
     }
 
     @GetMapping("/ex4_1")
-    public void ex4Extra(@ModelAttribute("dto")TodoDTO todoDTO , Model model){
-        log.info("ex4_1........");
-        //model.addAttribute("message","Hello Spring project");
+    public void ex4Extra(@ModelAttribute("dto") TodoDTO todoDTO, Model model){
+
         log.info(todoDTO);
+
     }
 
     @GetMapping("/ex5")
     public String ex5(RedirectAttributes redirectAttributes){
-        redirectAttributes.addAttribute("name","ABCCCDDD");
-        redirectAttributes.addFlashAttribute("result","success");
-        return "redirect:/ex06";
+
+        redirectAttributes.addAttribute("name","ABC");
+        redirectAttributes.addFlashAttribute("result", "success");
+
+        return "redirect:/ex6";
     }
 
     @GetMapping("/ex6")
-    public void ex6(){}
+    public void ex6() {
 
+    }
+
+    @GetMapping("/ex7")
+    public void ex7(String p1, int p2){
+        log.info("p1........."+p1);
+        log.info("p2........."+p2);
+    }
 
 
 }
