@@ -21,6 +21,7 @@ import javax.validation.Valid;
 @Log4j2
 @RequiredArgsConstructor //final로 지정해서 지정된 것만 주입하겠다.
 
+// TodoController의 역할은? 클라이언트의 요청사항을 서비스 객체에 전달하고 클라이언트에 응답하는 매니저
 public class TodoController {
     // injection을 안해서 데이터 베이스에 값이 넣어지지 않은 것
     private final TodoService todoService;
